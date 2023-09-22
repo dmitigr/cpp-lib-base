@@ -63,7 +63,9 @@ public:
           message_.append(": ").append(what_);
       }
       return message_;
-    } catch (...) {}
+    } catch (...) {
+      message_.clear();
+    }
     return what_;
   }
 
