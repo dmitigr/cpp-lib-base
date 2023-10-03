@@ -32,5 +32,6 @@ set(dmitigr_base_headers
   errc.hpp
   errctg.hpp
   exceptions.hpp
+  noncopymove.hpp
   ret.hpp
   )
