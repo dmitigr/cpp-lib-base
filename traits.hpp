@@ -1,6 +1,6 @@
 // -*- C++ -*-
 //
-// Copyright 2023 Dmitry Igrishin
+// Copyright 2024 Dmitry Igrishin
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,16 +14,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DMITIGR_BASE_BASE_HPP
-#define DMITIGR_BASE_BASE_HPP
+#ifndef DMITIGR_BASE_TRAITS_HPP
+#define DMITIGR_BASE_TRAITS_HPP
 
-#include "assert.hpp"
-#include "enum_bitmask.hpp"
-#include "err.hpp"
-#include "errc.hpp"
-#include "errctg.hpp"
-#include "exceptions.hpp"
-#include "ret.hpp"
-#include "traits.hpp"
+#include <array>
+#include <type_traits>
 
-#endif  // DMITIGR_BASE_BASE_HPP
+namespace dmitigr {
+
+template<typename>
+constexpr bool false_value{};
+
+template<typename>
+constexpr bool true_value{true};
+
+template<typename>
+struct Is_std_array : std::false_type {};
+
+template<typename T, auto N>
+struct Is_std_array<std::array<T, N>> : std::true_type {};
+
+} // namespace dmitigr
+
+#endif  // DMITIGR_BASE_TRAITS_HPP

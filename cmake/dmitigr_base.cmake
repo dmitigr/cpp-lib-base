@@ -34,4 +34,5 @@ set(dmitigr_base_headers
   exceptions.hpp
   noncopymove.hpp
   ret.hpp
+  traits.hpp
   )
