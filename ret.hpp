@@ -40,22 +40,22 @@ struct Ret final {
   using Result = T;
 
   /// Holds not an error and a default-constructed value of type T.
-  constexpr Ret() noexcept = default;
+  Ret() noexcept = default;
 
   /// Holds an error and a default-constructed value of type T.
-  constexpr Ret(Err err) noexcept
+  Ret(Err err) noexcept
     : err{std::move(err)}
   {}
 
   /// @overload
   template<typename ErrCondEnum,
     typename = std::enable_if_t<std::is_error_condition_enum_v<ErrCondEnum>>>
-  constexpr Ret(const ErrCondEnum ec) noexcept
+  Ret(const ErrCondEnum ec) noexcept
     : err{ec}
   {}
 
   /// Holds not an error and a given value of type T.
-  constexpr Ret(T res) noexcept
+  Ret(T res) noexcept
     : res{std::move(res)}
   {}
 
@@ -65,7 +65,7 @@ struct Ret final {
    * @details This constructor is useful to return an error with an information
    * provided by `res`.
    */
-  constexpr Ret(Err err, T res) noexcept
+  Ret(Err err, T res) noexcept
     : err{err}
     , res{std::move(res)}
   {}
