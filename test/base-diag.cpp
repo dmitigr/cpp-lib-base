@@ -14,20 +14,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DMITIGR_BASE_BASE_HPP
-#define DMITIGR_BASE_BASE_HPP
+#include "../diagnostic.hpp"
 
-#include "assert.hpp"
-#include "autostack.hpp"
-#include "contract.hpp"
-#include "diagnostic.hpp"
-#include "memory.hpp"
-#include "enum_bitmask.hpp"
-#include "err.hpp"
-#include "errc.hpp"
-#include "errctg.hpp"
-#include "exceptions.hpp"
-#include "ret.hpp"
-#include "traits.hpp"
+#include <iostream>
+#include <thread>
 
-#endif  // DMITIGR_BASE_BASE_HPP
+int main()
+{
+  const auto t = dmitigr::with_measure([]
+  {
+    std::this_thread::sleep_for(std::chrono::milliseconds{10});
+  });
+  std::cout << t.count() << std::endl;
+}

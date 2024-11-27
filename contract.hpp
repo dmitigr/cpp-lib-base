@@ -14,20 +14,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DMITIGR_BASE_BASE_HPP
-#define DMITIGR_BASE_BASE_HPP
+#ifndef DMITIGR_BASE_CONTRACT_HPP
+#define DMITIGR_BASE_CONTRACT_HPP
 
-#include "assert.hpp"
-#include "autostack.hpp"
-#include "contract.hpp"
-#include "diagnostic.hpp"
-#include "memory.hpp"
-#include "enum_bitmask.hpp"
-#include "err.hpp"
-#include "errc.hpp"
-#include "errctg.hpp"
-#include "exceptions.hpp"
-#include "ret.hpp"
-#include "traits.hpp"
+#include <utility>
 
-#endif  // DMITIGR_BASE_BASE_HPP
+namespace dmitigr {
+
+template<class E, typename T>
+T&& not_false(T&& value)
+{
+  if (value)
+    return std::forward<T>(value);
+  else
+    throw E{"unexpected false value"};
+}
+
+} // namespace dmitigr
+
+#endif  // DMITIGR_BASE_CONTRACT_HPP

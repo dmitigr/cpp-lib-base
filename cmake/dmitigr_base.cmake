@@ -1,6 +1,6 @@
 # -*- cmake -*-
 #
-# Copyright 2023 Dmitry Igrishin
+# Copyright 2024 Dmitry Igrishin
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 # Info
 # ------------------------------------------------------------------------------
 
-dmitigr_libs_set_library_info(base 0 0 0 "Base stuff")
+dmitigr_libs_set_library_info(base 0 0 0 "Base utilities")
 
 # ------------------------------------------------------------------------------
 # Sources
@@ -26,13 +26,25 @@ dmitigr_libs_set_library_info(base 0 0 0 "Base stuff")
 
 set(dmitigr_base_headers
   assert.hpp
+  autostack.hpp
+  contract.hpp
+  diagnostic.hpp
   endianness.hpp
   enum_bitmask.hpp
   err.hpp
   errc.hpp
   errctg.hpp
   exceptions.hpp
+  memory.hpp
   noncopymove.hpp
   ret.hpp
   traits.hpp
   )
+
+# ------------------------------------------------------------------------------
+# Tests
+# ------------------------------------------------------------------------------
+
+if(DMITIGR_LIBS_TESTS)
+  set(dmitigr_base_tests diag)
+endif()
