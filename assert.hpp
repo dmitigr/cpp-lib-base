@@ -17,8 +17,8 @@
 #ifndef DMITIGR_BASE_ASSERT_HPP
 #define DMITIGR_BASE_ASSERT_HPP
 
-#include <exception> // std::terminate
 #ifndef DMITIGR_ASSERT
+#include <exception> // std::terminate
 #include <iostream>
 #endif
 
