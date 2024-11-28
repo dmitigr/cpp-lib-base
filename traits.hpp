@@ -34,6 +34,9 @@ struct Is_std_array : std::false_type {};
 template<typename T, auto N>
 struct Is_std_array<std::array<T, N>> : std::true_type {};
 
+template<typename T>
+constexpr bool Is_std_array_v = Is_std_array<T>::value;
+
 } // namespace dmitigr
 
 #endif  // DMITIGR_BASE_TRAITS_HPP
