@@ -22,12 +22,12 @@
 namespace dmitigr {
 
 template<class E, typename T>
-T&& not_false(T&& value)
+T&& forward_or_throw(T&& value, const char* const what)
 {
   if (value)
     return std::forward<T>(value);
   else
-    throw E{"unexpected false value"};
+    throw E{what ? what : "dmitigr::forward_or_throw(value)"};
 }
 
 } // namespace dmitigr
