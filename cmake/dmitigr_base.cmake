@@ -25,6 +25,7 @@ dmitigr_libs_set_library_info(base 0 0 0 "Base utilities")
 # ------------------------------------------------------------------------------
 
 set(dmitigr_base_headers
+  algorithm.hpp
   assert.hpp
   autostack.hpp
   contract.hpp
@@ -39,6 +40,7 @@ set(dmitigr_base_headers
   noncopymove.hpp
   ret.hpp
   traits.hpp
+  tuple.hpp
   )
 
 # ------------------------------------------------------------------------------

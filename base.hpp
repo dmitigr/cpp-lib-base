@@ -17,6 +17,7 @@
 #ifndef DMITIGR_BASE_BASE_HPP
 #define DMITIGR_BASE_BASE_HPP
 
+#include "algorithm.hpp"
 #include "assert.hpp"
 #include "autostack.hpp"
 #include "contract.hpp"
@@ -29,5 +30,6 @@
 #include "exceptions.hpp"
 #include "ret.hpp"
 #include "traits.hpp"
+#include "tuple.hpp"
 
 #endif  // DMITIGR_BASE_BASE_HPP
