@@ -36,6 +36,8 @@ set(dmitigr_base_headers
   errc.hpp
   errctg.hpp
   exceptions.hpp
+  fifo_array.hpp
+  fifo_string.hpp
   memory.hpp
   noncopymove.hpp
   ret.hpp
@@ -48,5 +50,5 @@ set(dmitigr_base_headers
 # ------------------------------------------------------------------------------
 
 if(DMITIGR_LIBS_TESTS)
-  set(dmitigr_base_tests diag)
+  set(dmitigr_base_tests diag fifo_array fifo_string)
 endif()
