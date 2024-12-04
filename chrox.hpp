@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DMITIGR_BASE_CHRX_HPP
-#define DMITIGR_BASE_CHRX_HPP
+#ifndef DMITIGR_BASE_CHROX_HPP
+#define DMITIGR_BASE_CHROX_HPP
 
 #include "assert.hpp"
 
@@ -28,7 +28,7 @@
 #include <string_view>
 #include <type_traits>
 
-namespace dmitigr::chrx {
+namespace dmitigr::chrox {
 
 namespace detail {
 constexpr const std::size_t time_buf_size{128};
@@ -146,6 +146,6 @@ inline std::string_view now_us() noexcept
   return to_string_view_us(Clock::now());
 }
 
-} // namespace dmitigr::chrx
+} // namespace dmitigr::chrox
 
-#endif  // DMITIGR_BASE_CHRX_HPP
+#endif  // DMITIGR_BASE_CHROX_HPP

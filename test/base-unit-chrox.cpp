@@ -15,7 +15,7 @@
 // limitations under the License.
 
 #include "../../base/assert.hpp"
-#include "../../base/chrx.hpp"
+#include "../../base/chrox.hpp"
 
 #include <iostream>
 #include <limits>
@@ -23,13 +23,13 @@
 int main()
 {
   try {
-    namespace chrx = dmitigr::chrx;
+    namespace chrox = dmitigr::chrox;
 
     std::cout.precision(std::numeric_limits<long int>::max_digits10);
-    std::cout << chrx::now() << std::endl;
-    std::cout << chrx::now_us() << std::endl;
-    std::cout << chrx::now_us() << std::endl;
-    std::cout << chrx::now_iso8601() << std::endl;
+    std::cout << chrox::now() << std::endl;
+    std::cout << chrox::now_us() << std::endl;
+    std::cout << chrox::now_us() << std::endl;
+    std::cout << chrox::now_iso8601() << std::endl;
   } catch (const std::exception& e) {
     std::cerr << e.what() << std::endl;
     return 1;

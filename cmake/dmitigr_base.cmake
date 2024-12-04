@@ -28,7 +28,7 @@ set(dmitigr_base_headers
   algorithm.hpp
   assert.hpp
   autostack.hpp
-  chrx.hpp
+  chrox.hpp
   contract.hpp
   diagnostic.hpp
   endianness.hpp
@@ -51,5 +51,5 @@ set(dmitigr_base_headers
 # ------------------------------------------------------------------------------
 
 if(DMITIGR_LIBS_TESTS)
-  set(dmitigr_base_tests chrx diag fifo_array fifo_string)
+  set(dmitigr_base_tests chrox diag fifo_array fifo_string)
 endif()
