@@ -39,6 +39,7 @@ set(dmitigr_base_headers
   exceptions.hpp
   fifo_array.hpp
   fifo_string.hpp
+  ipc.hpp
   memory.hpp
   noncopymove.hpp
   ret.hpp
