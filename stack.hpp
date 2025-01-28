@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DMITIGR_BASE_SCOPE_STACK_HPP
-#define DMITIGR_BASE_SCOPE_STACK_HPP
+#ifndef DMITIGR_BASE_STACK_HPP
+#define DMITIGR_BASE_STACK_HPP
 
 #include <deque>
 #include <utility>
@@ -98,4 +98,4 @@ private:
 
 } // namespace dmitigr
 
-#endif  // DMITIGR_BASE_SCOPE_STACK_HPP
+#endif  // DMITIGR_BASE_STACK_HPP
