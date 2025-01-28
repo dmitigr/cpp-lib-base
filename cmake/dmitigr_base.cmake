@@ -27,7 +27,7 @@ dmitigr_libs_set_library_info(base 0 0 0 "Base")
 set(dmitigr_base_headers
   algorithm.hpp
   assert.hpp
-  chronox.hpp
+  chrono.hpp
   concurrency.hpp
   endianness.hpp
   enum.hpp
@@ -36,6 +36,7 @@ set(dmitigr_base_headers
   errctg.hpp
   exceptions.hpp
   fifo.hpp
+  filesystem.hpp
   hash.hpp
   ipc.hpp
   log.hpp
@@ -60,9 +61,9 @@ endif()
 # ------------------------------------------------------------------------------
 
 if(DMITIGR_LIBS_TESTS)
-  set(dmitigr_base_tests chronox concurrency_pool fifo_array
+  set(dmitigr_base_tests chrono thread_pool fifo_array
     fifo_string hash utility)
   if(LINUX)
-    list(APPEND dmitigr_base_tests concurrency_pin)
+    list(APPEND dmitigr_base_tests thread_pin)
   endif()
 endif()

@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DMITIGR_BASE_CONCURRENCY_HPP
-#define DMITIGR_BASE_CONCURRENCY_HPP
+#ifndef DMITIGR_BASE_THREAD_HPP
+#define DMITIGR_BASE_THREAD_HPP
 
 #include "assert.hpp"
 #include "exceptions.hpp"
@@ -38,14 +38,14 @@
 #include <pthread.h>
 #endif  // __linux__
 
-namespace dmitigr::concurrency {
+namespace dmitigr::thread {
 
 // -----------------------------------------------------------------------------
-// Simple_thread_pool
+// Pool
 // -----------------------------------------------------------------------------
 
 /// Simple thread pool.
-class Simple_thread_pool final {
+class Pool final {
 public:
   /// A task.
   using Task = std::function<void()>;
@@ -54,7 +54,7 @@ public:
   using Logger = std::function<void(std::string_view)>;
 
   /// The destructor.
-  ~Simple_thread_pool()
+  ~Pool()
   {
     // Stop queue.
     {
@@ -77,24 +77,24 @@ public:
   /// @{
 
   /// Non copy-consructible.
-  Simple_thread_pool(const Simple_thread_pool&) = delete;
+  Pool(const Pool&) = delete;
 
   /// Non copy-assignable.
-  Simple_thread_pool& operator=(const Simple_thread_pool&) = delete;
+  Pool& operator=(const Pool&) = delete;
 
   /// Non move-constructible.
-  Simple_thread_pool(Simple_thread_pool&&) = delete;
+  Pool(Pool&&) = delete;
 
   /// Non move-assignable.
-  Simple_thread_pool& operator=(Simple_thread_pool&&) = delete;
+  Pool& operator=(Pool&&) = delete;
 
   /**
    * @brief Constructs the thread pool of size `std::thread::hardware_concurrency()`.
    *
-   * @see Simple_thread_pool(std::size_t, Logger)
+   * @see Pool(std::size_t, Logger)
    */
-  Simple_thread_pool(Logger logger = {})
-    : Simple_thread_pool{std::thread::hardware_concurrency(), std::move(logger)}
+  Pool(Logger logger = {})
+    : Pool{std::thread::hardware_concurrency(), std::move(logger)}
   {}
 
   /**
@@ -107,7 +107,7 @@ public:
    * @par Requires
    * `size > 0`.
    */
-  explicit Simple_thread_pool(const std::size_t size, Logger logger = {})
+  explicit Pool(const std::size_t size, Logger logger = {})
     : logger_{std::move(logger)}
   {
     if (!size)
@@ -116,7 +116,7 @@ public:
     queue_.is_started = true;
     pool_.threads.reserve(size);
     for (std::size_t i{}; i < size; ++i)
-      pool_.threads.emplace_back(&Simple_thread_pool::wait_and_run, this);
+      pool_.threads.emplace_back(&Pool::wait_and_run, this);
   }
 
   /// @}
@@ -243,6 +243,6 @@ inline std::error_code set_affinity(std::thread& thread,
 #endif
 }
 
-} // namespace dmitigr::concurrency
+} // namespace dmitigr::thread
 
-#endif  // DMITIGR_BASE_CONCURRENCY_HPP
+#endif  // DMITIGR_BASE_THREAD_HPP

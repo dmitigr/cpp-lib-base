@@ -17,9 +17,9 @@
 #ifndef DMITIGR_BASE_LOG_HPP
 #define DMITIGR_BASE_LOG_HPP
 
-#include "fsx.hpp"
-#include "chronox.hpp"
+#include "chrono.hpp"
 #include "exceptions.hpp"
+#include "filesystem.hpp"
 
 #include <atomic>
 #include <fstream>
@@ -47,7 +47,7 @@ inline void redirect_clog(const std::filesystem::path& path,
 /// @returns std::clog after writing now string to it first.
 inline std::ostream& clog_now() noexcept
 {
-  return std::clog << dmitigr::chronox::now() << ": ";
+  return std::clog << dmitigr::chrono::now() << ": ";
 }
 
 /**

@@ -15,7 +15,7 @@
 // limitations under the License.
 
 #include "../../base/assert.hpp"
-#include "../../base/chronox.hpp"
+#include "../../base/chrono.hpp"
 
 #include <iostream>
 #include <limits>
@@ -23,13 +23,13 @@
 int main()
 {
   try {
-    namespace chronox = dmitigr::chronox;
+    namespace chrono = dmitigr::chrono;
 
     std::cout.precision(std::numeric_limits<long int>::max_digits10);
-    std::cout << chronox::now() << std::endl;
-    std::cout << chronox::now_us() << std::endl;
-    std::cout << chronox::now_us() << std::endl;
-    std::cout << chronox::now_iso8601() << std::endl;
+    std::cout << chrono::now() << std::endl;
+    std::cout << chrono::now_us() << std::endl;
+    std::cout << chrono::now_us() << std::endl;
+    std::cout << chrono::now_iso8601() << std::endl;
   } catch (const std::exception& e) {
     std::cerr << e.what() << std::endl;
     return 1;

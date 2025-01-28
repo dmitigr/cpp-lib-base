@@ -1,6 +1,6 @@
 // -*- C++ -*-
 //
-// Copyright 2024 Dmitry Igrishin
+// Copyright 2025 Dmitry Igrishin
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DMITIGR_BASE_FSX_HPP
-#define DMITIGR_BASE_FSX_HPP
+#ifndef DMITIGR_BASE_FILESYSTEM_HPP
+#define DMITIGR_BASE_FILESYSTEM_HPP
 
 #if (defined(__clang__) && (__clang_major__ < 7)) || \
     (defined(__GNUG__)  && (__GNUC__ < 8) && !defined (__clang__))
@@ -33,7 +33,7 @@
 #include <stdexcept>
 #include <vector>
 
-namespace dmitigr::fsx {
+namespace dmitigr::filesystem {
 
 /**
  * @returns The vector of the paths.
@@ -135,6 +135,6 @@ inline void overwrite(const std::filesystem::path& path,
         " cannot open file"};
 }
 
-} // namespace dmitigr::fsx
+} // namespace dmitigr::filesystem
 
-#endif  // DMITIGR_BASE_FSX_HPP
+#endif  // DMITIGR_BASE_FILESYSTEM_HPP
