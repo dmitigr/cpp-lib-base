@@ -39,6 +39,7 @@ set(dmitigr_base_headers
   errctg.hpp
   exceptions.hpp
   fifo.hpp
+  hash.hpp
   ipc.hpp
   log.hpp
   memory.hpp
@@ -61,7 +62,7 @@ endif()
 # ------------------------------------------------------------------------------
 
 if(DMITIGR_LIBS_TESTS)
-  set(dmitigr_base_tests chrox concur_pool diag fifo_array fifo_string)
+  set(dmitigr_base_tests chrox concur_pool diag fifo_array fifo_string hash)
   if(LINUX)
     list(APPEND dmitigr_base_tests concur_pin)
   endif()
