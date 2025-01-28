@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DMITIGR_BASE_CONCUR_HPP
-#define DMITIGR_BASE_CONCUR_HPP
+#ifndef DMITIGR_BASE_CONCURRENCY_HPP
+#define DMITIGR_BASE_CONCURRENCY_HPP
 
 #include "assert.hpp"
 #include "exceptions.hpp"
@@ -38,7 +38,7 @@
 #include <pthread.h>
 #endif  // __linux__
 
-namespace dmitigr::concur {
+namespace dmitigr::concurrency {
 
 // -----------------------------------------------------------------------------
 // Simple_thread_pool
@@ -243,6 +243,6 @@ inline std::error_code set_affinity(std::thread& thread,
 #endif
 }
 
-} // namespace dmitigr::concur
+} // namespace dmitigr::concurrency
 
-#endif  // DMITIGR_BASE_CONCUR_HPP
+#endif  // DMITIGR_BASE_CONCURRENCY_HPP

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 //
-// Copyright 2024 Dmitry Igrishin
+// Copyright 2025 Dmitry Igrishin
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DMITIGR_BASE_CHROX_HPP
-#define DMITIGR_BASE_CHROX_HPP
+#ifndef DMITIGR_BASE_CHRONOX_HPP
+#define DMITIGR_BASE_CHRONOX_HPP
 
 #include "assert.hpp"
 
@@ -28,7 +28,7 @@
 #include <string_view>
 #include <type_traits>
 
-namespace dmitigr::chrox {
+namespace dmitigr::chronox {
 
 namespace detail {
 constexpr const std::size_t time_buf_size{128};
@@ -119,7 +119,8 @@ to_string_view_us(const std::chrono::time_point<Clock, Duration> tp) noexcept
     }();
     const auto rest_length = std::snprintf(const_cast<char*>(result.data()) + dt_length,
       max_rest_length, fmt, '.', us.count());
-    DMITIGR_ASSERT(rest_length > 0 && static_cast<std::size_t>(rest_length) < max_rest_length);
+    DMITIGR_ASSERT(rest_length > 0 &&
+      static_cast<std::size_t>(rest_length) < max_rest_length);
     return {result.data(), dt_length + rest_length};
   } else
     return result;
@@ -146,6 +147,6 @@ inline std::string_view now_us() noexcept
   return to_string_view_us(Clock::now());
 }
 
-} // namespace dmitigr::chrox
+} // namespace dmitigr::chronox
 
-#endif  // DMITIGR_BASE_CHROX_HPP
+#endif  // DMITIGR_BASE_CHRONOX_HPP

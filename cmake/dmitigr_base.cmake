@@ -18,7 +18,7 @@
 # Info
 # ------------------------------------------------------------------------------
 
-dmitigr_libs_set_library_info(base 0 0 0 "Base utilities")
+dmitigr_libs_set_library_info(base 0 0 0 "Base")
 
 # ------------------------------------------------------------------------------
 # Sources
@@ -27,9 +27,8 @@ dmitigr_libs_set_library_info(base 0 0 0 "Base utilities")
 set(dmitigr_base_headers
   algorithm.hpp
   assert.hpp
-  chrox.hpp
-  concur.hpp
-  contract.hpp
+  chronox.hpp
+  concurrency.hpp
   diagnostic.hpp
   endianness.hpp
   enum.hpp
@@ -47,6 +46,7 @@ set(dmitigr_base_headers
   stack.hpp
   traits.hpp
   tuple.hpp
+  utility.hpp
   )
 
 # ------------------------------------------------------------------------------
@@ -62,8 +62,9 @@ endif()
 # ------------------------------------------------------------------------------
 
 if(DMITIGR_LIBS_TESTS)
-  set(dmitigr_base_tests chrox concur_pool diag fifo_array fifo_string hash)
+  set(dmitigr_base_tests chronox concurrency_pool diagnostic fifo_array
+    fifo_string hash)
   if(LINUX)
-    list(APPEND dmitigr_base_tests concur_pin)
+    list(APPEND dmitigr_base_tests concurrency_pin)
   endif()
 endif()

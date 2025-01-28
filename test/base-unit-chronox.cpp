@@ -1,6 +1,6 @@
 // -*- C++ -*-
 //
-// Copyright 2025 Dmitry Igrishin
+// Copyright 2024 Dmitry Igrishin
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,15 +15,21 @@
 // limitations under the License.
 
 #include "../../base/assert.hpp"
-#include "../../base/concur.hpp"
+#include "../../base/chronox.hpp"
+
+#include <iostream>
+#include <limits>
 
 int main()
 {
-  namespace concur = dmitigr::concur;
-
   try {
-    const auto err = concur::set_affinity(pthread_self(), 0);
-    DMITIGR_ASSERT(!err);
+    namespace chronox = dmitigr::chronox;
+
+    std::cout.precision(std::numeric_limits<long int>::max_digits10);
+    std::cout << chronox::now() << std::endl;
+    std::cout << chronox::now_us() << std::endl;
+    std::cout << chronox::now_us() << std::endl;
+    std::cout << chronox::now_iso8601() << std::endl;
   } catch (const std::exception& e) {
     std::cerr << e.what() << std::endl;
     return 1;

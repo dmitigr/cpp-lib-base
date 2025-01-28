@@ -15,34 +15,15 @@
 // limitations under the License.
 
 #include "../../base/assert.hpp"
-#include "../../base/concur.hpp"
-
-#include <chrono>
-#include <thread>
+#include "../../base/concurrency.hpp"
 
 int main()
 {
-  namespace concur = dmitigr::concur;
+  namespace concur = dmitigr::concurrency;
 
   try {
-    const auto size = std::thread::hardware_concurrency() * 2;
-    concur::Simple_thread_pool pool{size};
-    DMITIGR_ASSERT(pool.size() == size);
-    DMITIGR_ASSERT(pool.queue_size() == 0);
-
-    for (std::size_t i = 0; i < 16*size; ++i) {
-      pool.submit([]
-      {
-        std::this_thread::sleep_for(std::chrono::milliseconds{5});
-        std::cout << "Hello from thread " << std::this_thread::get_id() << std::endl;
-      });
-    }
-
-    while (pool.queue_size()) {
-      std::cout << "Thread pool has " << pool.queue_size() << " uncompleted tasks" << std::endl;
-      std::this_thread::sleep_for(std::chrono::milliseconds{8});
-    }
-    DMITIGR_ASSERT(pool.queue_size() == 0);
+    const auto err = concur::set_affinity(pthread_self(), 0);
+    DMITIGR_ASSERT(!err);
   } catch (const std::exception& e) {
     std::cerr << e.what() << std::endl;
     return 1;
