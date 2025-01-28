@@ -28,7 +28,9 @@
 #endif
 
 #include <locale>
+#include <fstream>
 #include <optional>
+#include <stdexcept>
 #include <vector>
 
 namespace dmitigr::fsx {
@@ -117,6 +119,20 @@ inline std::filesystem::path to_uppercase_root_name(const std::filesystem::path&
   result = std::filesystem::path{root_name};
   result += path.root_directory();
   return result += path.relative_path();
+}
+
+/// Creates the file at `path` and writes the `data` into it.
+inline void overwrite(const std::filesystem::path& path,
+  const std::string_view data)
+{
+  if (!data.data())
+    throw std::invalid_argument{"cannot overwrite file "+path.string()+":"
+        " invalid data"};
+  else if (std::ofstream pf{path, std::ios_base::trunc})
+    pf.write(data.data(), data.size());
+  else
+    throw std::runtime_error{"cannot overwrite file "+path.string()+":"
+        " cannot open file"};
 }
 
 } // namespace dmitigr::fsx
