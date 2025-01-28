@@ -17,8 +17,7 @@
 #ifndef DMITIGR_BASE_EXCEPTIONS_HPP
 #define DMITIGR_BASE_EXCEPTIONS_HPP
 
-#include "err.hpp"
-#include "errctg.hpp"
+#include "error.hpp"
 
 #include <exception>
 #include <stdexcept>

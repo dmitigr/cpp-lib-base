@@ -17,7 +17,7 @@
 #ifndef DMITIGR_BASE_RET_HPP
 #define DMITIGR_BASE_RET_HPP
 
-#include "err.hpp"
+#include "error.hpp"
 
 #include <type_traits>
 
