@@ -29,6 +29,7 @@ set(dmitigr_base_headers
   assert.hpp
   autostack.hpp
   chrox.hpp
+  concur.hpp
   contract.hpp
   diagnostic.hpp
   endianness.hpp
@@ -47,9 +48,20 @@ set(dmitigr_base_headers
   )
 
 # ------------------------------------------------------------------------------
+# Dependencies
+# ------------------------------------------------------------------------------
+
+if(UNIX)
+  list(APPEND dmitigr_base_target_link_libraries_interface pthread)
+endif()
+
+# ------------------------------------------------------------------------------
 # Tests
 # ------------------------------------------------------------------------------
 
 if(DMITIGR_LIBS_TESTS)
-  set(dmitigr_base_tests chrox diag fifo_array fifo_string)
+  set(dmitigr_base_tests chrox concur_pool diag fifo_array fifo_string)
+  if(LINUX)
+    list(APPEND dmitigr_base_tests concur_pin)
+  endif()
 endif()
