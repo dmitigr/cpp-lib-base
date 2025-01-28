@@ -40,6 +40,7 @@ set(dmitigr_base_headers
   memory.hpp
   noncopymove.hpp
   ret.hpp
+  rnd.hpp
   stack.hpp
   stream.hpp
   thread.hpp
@@ -61,7 +62,7 @@ endif()
 
 if(DMITIGR_LIBS_TESTS)
   set(dmitigr_base_tests chrono thread_pool fifo_array
-    fifo_string hash utility)
+    fifo_string hash rnd utility)
   if(LINUX)
     list(APPEND dmitigr_base_tests thread_pin)
   endif()

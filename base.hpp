@@ -32,6 +32,7 @@
 #include "memory.hpp"
 #include "noncopymove.hpp"
 #include "ret.hpp"
+#include "rnd.hpp"
 #include "stack.hpp"
 #include "stream.hpp"
 #include "thread.hpp"
