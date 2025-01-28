@@ -28,12 +28,9 @@ set(dmitigr_base_headers
   algorithm.hpp
   assert.hpp
   chrono.hpp
-  concurrency.hpp
   endianness.hpp
   enum.hpp
-  err.hpp
-  errc.hpp
-  errctg.hpp
+  error.hpp
   exceptions.hpp
   fifo.hpp
   filesystem.hpp
@@ -44,6 +41,8 @@ set(dmitigr_base_headers
   noncopymove.hpp
   ret.hpp
   stack.hpp
+  stream.hpp
+  thread.hpp
   traits.hpp
   utility.hpp
   )
