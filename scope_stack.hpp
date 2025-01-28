@@ -1,6 +1,6 @@
 // -*- C++ -*-
 //
-// Copyright 2024 Dmitry Igrishin
+// Copyright 2025 Dmitry Igrishin
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,18 +14,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DMITIGR_BASE_AUTOSTACK_HPP
-#define DMITIGR_BASE_AUTOSTACK_HPP
+#ifndef DMITIGR_BASE_SCOPE_STACK_HPP
+#define DMITIGR_BASE_SCOPE_STACK_HPP
 
 #include <deque>
 #include <utility>
 
 namespace dmitigr {
 
-/// An autostack.
+/// A scope stack.
 template<typename T, class Container = std::deque<T>>
-struct Autostack final {
-  /// An autostack guard.
+struct Scope_stack final {
+  /// An Scope_stack guard.
   struct Guard final {
     /// Removes the top element.
     ~Guard()
@@ -43,12 +43,12 @@ struct Autostack final {
     Guard& operator=(Guard&&) = delete;
 
   private:
-    friend Autostack;
+    friend Scope_stack;
 
-    Autostack& self_;
+    Scope_stack& self_;
 
     template<typename U>
-    Guard(Autostack& self, U&& element)
+    Guard(Scope_stack& self, U&& element)
       : self_{self}
     {
       self_.stack_.emplace_back(std::forward<U>(element));
@@ -69,7 +69,7 @@ struct Autostack final {
   }
 
   /// The constructor.
-  Autostack(Container stack)
+  Scope_stack(Container stack)
     : stack_{std::move(stack)}
   {}
 
@@ -98,4 +98,4 @@ private:
 
 } // namespace dmitigr
 
-#endif  // DMITIGR_BASE_AUTOSTACK_HPP
+#endif  // DMITIGR_BASE_SCOPE_STACK_HPP
