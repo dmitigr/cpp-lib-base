@@ -33,7 +33,7 @@ set(dmitigr_base_headers
   contract.hpp
   diagnostic.hpp
   endianness.hpp
-  enum_bitmask.hpp
+  enum.hpp
   err.hpp
   errc.hpp
   errctg.hpp

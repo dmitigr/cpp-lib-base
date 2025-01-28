@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DMITIGR_BASE_ENUM_BITMASK_HPP
-#define DMITIGR_BASE_ENUM_BITMASK_HPP
+#ifndef DMITIGR_BASE_ENUM_HPP
+#define DMITIGR_BASE_ENUM_HPP
 
 #include <type_traits>
 
@@ -135,4 +135,4 @@ operator^=(T& lhs, const T rhs) noexcept
     return dmitigr::operator^=(lhs, rhs);                   \
   }
 
-#endif  // DMITIGR_BASE_ENUM_BITMASK_HPP
+#endif  // DMITIGR_BASE_ENUM_HPP
