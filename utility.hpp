@@ -17,6 +17,7 @@
 #ifndef DMITIGR_BASE_UTILITY_HPP
 #define DMITIGR_BASE_UTILITY_HPP
 
+#include <chrono>
 #include <utility>
 
 namespace dmitigr {
@@ -28,6 +29,29 @@ T&& forward_or_throw(T&& value, const char* const what)
     return std::forward<T>(value);
   else
     throw E{what ? what : "dmitigr::forward_or_throw(value)"};
+}
+
+/// @returns `true` if instance of type `E` is thrown upon calling of `f`.
+template<class E, typename F>
+bool with_catch(const F& f) noexcept
+{
+  try {
+    f();
+  } catch (const E&) {
+    return true;
+  } catch (...) {}
+  return false;
+}
+
+/// @returns The duration of call of `f`.
+template<typename D = std::chrono::milliseconds, typename F>
+auto with_measure(const F& f)
+{
+  namespace chrono = std::chrono;
+  const auto start = chrono::high_resolution_clock::now();
+  f();
+  const auto end = chrono::high_resolution_clock::now();
+  return chrono::duration_cast<D>(end - start);
 }
 
 } // namespace dmitigr

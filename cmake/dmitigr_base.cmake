@@ -29,7 +29,6 @@ set(dmitigr_base_headers
   assert.hpp
   chronox.hpp
   concurrency.hpp
-  diagnostic.hpp
   endianness.hpp
   enum.hpp
   err.hpp
@@ -62,8 +61,8 @@ endif()
 # ------------------------------------------------------------------------------
 
 if(DMITIGR_LIBS_TESTS)
-  set(dmitigr_base_tests chronox concurrency_pool diagnostic fifo_array
-    fifo_string hash)
+  set(dmitigr_base_tests chronox concurrency_pool fifo_array
+    fifo_string hash utility)
   if(LINUX)
     list(APPEND dmitigr_base_tests concurrency_pin)
   endif()
