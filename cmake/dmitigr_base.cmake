@@ -37,8 +37,7 @@ set(dmitigr_base_headers
   errc.hpp
   errctg.hpp
   exceptions.hpp
-  fifo_array.hpp
-  fifo_string.hpp
+  fifo.hpp
   ipc.hpp
   memory.hpp
   noncopymove.hpp

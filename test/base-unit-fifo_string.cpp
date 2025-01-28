@@ -15,7 +15,7 @@
 // limitations under the License.
 
 #include "../assert.hpp"
-#include "../fifo_string.hpp"
+#include "../fifo.hpp"
 
 int main()
 {

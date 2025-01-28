@@ -15,7 +15,7 @@
 // limitations under the License.
 
 #include "../assert.hpp"
-#include "../fifo_array.hpp"
+#include "../fifo.hpp"
 
 #include <string_view>
 
