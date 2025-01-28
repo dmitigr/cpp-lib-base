@@ -40,6 +40,7 @@ set(dmitigr_base_headers
   exceptions.hpp
   fifo.hpp
   ipc.hpp
+  log.hpp
   memory.hpp
   noncopymove.hpp
   ret.hpp
