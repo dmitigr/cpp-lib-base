@@ -44,7 +44,6 @@ set(dmitigr_base_headers
   ret.hpp
   stack.hpp
   traits.hpp
-  tuple.hpp
   utility.hpp
   )
 

@@ -18,8 +18,15 @@
 #define DMITIGR_BASE_ALGORITHM_HPP
 
 #include <algorithm>
+#include <cstddef>
+#include <tuple>
+#include <utility>
 
 namespace dmitigr {
+
+// -----------------------------------------------------------------------------
+// STL
+// -----------------------------------------------------------------------------
 
 /// Removes duplicates from the given container.
 template<class Container>
@@ -35,6 +42,30 @@ bool is_begins_with(const Container& input, const Container& pattern) noexcept
 {
   return (pattern.size() <= input.size()) &&
     std::equal(cbegin(input), cend(input), cbegin(pattern));
+}
+
+// -----------------------------------------------------------------------------
+// Tuple
+// -----------------------------------------------------------------------------
+
+namespace detail {
+
+template<std::size_t ... I, typename Tuple, typename Predicate>
+static bool is_all_of(std::index_sequence<I...>,
+  const Tuple& tuple, const Predicate& predicate) noexcept
+{
+  constexpr auto tsz = std::tuple_size<std::decay_t<decltype(tuple)>>();
+  static_assert(sizeof...(I) == tsz);
+  return (predicate(std::get<I>(tuple)) && ...);
+}
+
+} // namespace detail
+
+template<typename Tuple, typename Predicate>
+static bool is_all_of(const Tuple& tuple, const Predicate& predicate) noexcept
+{
+  constexpr auto tsz = std::tuple_size<std::decay_t<decltype(tuple)>>();
+  return detail::is_all_of(std::make_index_sequence<tsz>{}, tuple, predicate);
 }
 
 } // namespace dmitigr
